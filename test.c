@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:21:44 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/04 18:53:34 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/04 18:56:57 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(void)
 	int		img_width;
 	int		img_height;
 
+	printf("test");
 	vars = malloc(sizeof(t_mlx));
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, 1024, 600, "FdF");
