@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:21:44 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/04 18:26:50 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/04 18:53:34 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,4 @@ int	main(void)
 	mlx_on_event(vars->mlx, vars->win, 0, ft_close, vars);
 	mlx_loop(vars->mlx);
 }
+//test
