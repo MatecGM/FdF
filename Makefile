@@ -6,6 +6,7 @@ NAME = fdf
 
 SRCS = main.c\
 		input.c\
+		mesh.c\
 
 OBJS = $(SRCS:.c=.o)
 MLX = MacroLibX/libmlx.so
