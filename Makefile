@@ -4,7 +4,8 @@ CC = cc
 
 NAME = fdf
 
-SRCS = test.c\
+SRCS = main.c\
+		input.c\
 
 OBJS = $(SRCS:.c=.o)
 MLX = MacroLibX/libmlx.so

@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 11:04:48 by mbico             #+#    #+#             */
-/*   Updated: 2023/12/28 13:39:51 by mbico            ###   ########.fr       */
+/*   Created: 2024/01/04 21:50:56 by mbico             #+#    #+#             */
+/*   Updated: 2024/01/04 21:51:35 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLONG_H
+#include "fdf.h"
 
-# define	SOLONG_H
+int	ft_keyboard(int keycode, void *vars)
+{
+	t_vars	*v;
 
-typedef struct s_mlx {
-	void	*mlx;
-	void	*win;
-}			t_mlx;
+	v = (t_vars *) vars;
+	if (keycode == 41)
+		ft_close(v);
+	return (0);
+}
 
-#endif
+int	ft_window(int keycode, void *vars)
+{
+	t_vars	*v;
+
+	v = (t_vars *) vars;
+	if (keycode == 0)
+		ft_close(v);
+	return (0);
+}
