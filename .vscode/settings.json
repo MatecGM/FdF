@@ -6,6 +6,9 @@
 		"random": "c",
 		"limits": "c",
 		"semaphore": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"fdf.h": "c",
+		"libft.h": "c",
+		"ft_printf.h": "c"
 	}
 }
