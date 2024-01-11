@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:50:56 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/09 13:24:42 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/10 17:30:53 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_ampl(t_vars *vars, int key)
 		if (key == 82)
 			vars->ampl += 1;
 		else
-			vars->ampl -= 1;	
+			vars->ampl -= 1;
 		ft_fdf(vars);
 }
 

@@ -24,7 +24,7 @@ LIBFT = libft/libft.a
 all : $(NAME)
 
 $(NAME): $(OBJS) $(MLX) $(LIBFT)
-	$(CC) $(OBJS) -o $(NAME) -lXext -lX11 $(MLX) $(LIBFT) -lSDL2 -g -lm
+	$(CC) -g  $(OBJS) -o $(NAME) -lXext -lX11 $(MLX) $(LIBFT) -lSDL2 -lm
 
 $(MLX):
 	make -C MacroLibX -j
@@ -33,7 +33,7 @@ $(LIBFT):
 	make -C libft -j
 
 .c.o:
-	$(CC) $(FLAGS) -I/usr/include -I./MacroLibX/includes -I./libft -O3 -c $< -o $@
+	$(CC) -g $(FLAGS) -I/usr/include -I./MacroLibX/includes -I./libft -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
