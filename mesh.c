@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 23:19:38 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/10 19:40:28 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/11 15:13:38 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ft_link_point_y(t_vars *vars, t_point p1, t_point p2)
 	while (y + p1.y != p2.y)
 	{
 		x = y * d;
-		mlx_set_image_pixel(vars->mlx, vars->img, p1.x + x, p1.y + y, 0xFFFFFFFF);
+		if ((x + p1.x >= 0 && x + p1.x <= 1024) && (y + p1.y >= 0 && y + p1.y <= 600))
+			mlx_set_image_pixel(vars->mlx, vars->img, p1.x + x, p1.y + y, 0xFFFFFFFF);
 		y += b;
 	}
 }
@@ -49,7 +50,8 @@ void	ft_link_point_x(t_vars *vars, t_point p1, t_point p2)
 		while (x + p1.x != p2.x)
 		{
 			y = x * d;
-			mlx_set_image_pixel(vars->mlx, vars->img, p1.x + x, p1.y + y, 0xFFFFFFFF);
+			if ((x + p1.x >= 0 && x + p1.x <= 1024) && (y + p1.y >= 0 && y + p1.y <= 600))
+				mlx_set_image_pixel(vars->mlx, vars->img, p1.x + x, p1.y + y, 0xFFFFFFFF);
 			x += b;
 		}
 	}

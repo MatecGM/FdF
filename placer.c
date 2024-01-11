@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:46:57 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/10 14:08:03 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/11 18:11:22 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	ft_placer(t_vars *vars)
 {
 	int	margin;
 	int	coord[2];
-	double	diago;
+	int	maxmax;
 
 	coord[0] = 0;
 	coord[1] = 0;
 	margin = 100;
+	maxmax;
 
 	while (coord[1] < vars->maxy)
 	{

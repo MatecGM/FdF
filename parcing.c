@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:59:46 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/10 19:41:07 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/11 18:01:13 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	ft_parse(t_vars *vars, int fd)
 	vars->maxy = 0;
 	while (line)
 	{
-		//free(line);
 		ft_lstadd_back(&lst_map, ft_lstnew(line));
 		line = get_next_line(fd);
 		vars->maxy ++;
@@ -70,4 +69,5 @@ void	ft_parse(t_vars *vars, int fd)
 		vars->maxy ++;
 	}
 	ft_lstclear(&start_lst, free);
+	close(fd);
 }
