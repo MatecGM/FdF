@@ -10,10 +10,12 @@ SRCS = main.c\
 		placer.c\
 		parcing.c\
 		mouvement.c\
-		printf/ft_libft.c \
-		printf/ft_printf.c \
-		printf/ft_putnbr_base.c \
-		printf/ft_putnbr.c \
+		matrix.c\
+		matrix_const.c\
+		printf/ft_printf.c\
+		printf/ft_libft.c\
+		printf/ft_putnbr.c\
+		printf/ft_putnbr_base.c
 #enlever printf
 
 OBJS = $(SRCS:.c=.o)

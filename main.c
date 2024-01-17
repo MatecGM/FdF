@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:21:44 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/14 20:06:29 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/17 18:39:31 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,24 @@ void	ft_varsinit(t_vars *vars)
 	vars->maxx = 0;
 	vars->maxy = 0;
 	vars->fd = -1;
-	vars->zoom = 1;
 	vars->viewx = 0;
 	vars->viewy = 0;
 	vars->init_viewx = 0;
 	vars->init_viewy = 0;
-	vars->click = 0;
+	vars->left_click = 0;
+	vars->crz = 0;
+	vars->init_crz = 0;
+	vars->crx = 0;
+	vars->init_crx = 0;
+	vars->right_click = 0;
+	vars->imatrix = ft_imatrix();
+	ft_matrix_mult_one(&vars->imatrix, 15);
+	vars->cmatrix = vars->imatrix;
+	vars->bmatrix = vars->imatrix;
+	vars->rx = ft_rx(vars->crx);
+	vars->rz = ft_rz(vars->crz);
+	vars->minz = 0;
+	vars->maxz = 0;
 }
 
 void	ft_read_file(t_vars *vars, int argc, char **argv)

@@ -6,34 +6,56 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:46:57 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/14 20:14:08 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/17 18:34:52 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+
+// 1          0           0
+// 0          cos(teta)   sin(teta)
+// 0          sin(teta)   cos(teta)
+
+void	ft_matrix_rotation(t_vars *vars, int px, int py)
+{
+	int	x;
+	int	y;
+	int	z;
+
+	x = vars->links[py][px].x;
+	y = vars->links[py][px].y;
+	z = vars->links[py][px].z * vars->ampl;
+	vars->links[py][px].x += vars->viewx;
+	vars->links[py][px].y = y * cos(1) - z * sin(1) + vars->viewy;
+}
+
+void	ft_bigcalcul(t_vars *vars, int x, int y)
+{
+	float	maxmax;
+
+	maxmax = (vars->maxx * (vars->maxx >= vars->maxy)
+			+ vars->maxy * (vars->maxy > vars->maxx));
+	vars->links[y][x].x = 512+ (412 / maxmax * (x - y));
+	vars->links[y][x].y = 100 + (200 / maxmax * (x + y)) - vars->links[y][x].z;
+}
+
+
+
 // taile de la fenêtre 1024 * 600
 void	ft_placer(t_vars *vars)
 {
-	int		margin;
 	int		x;
 	int		y;
-	float	maxmax;
 
 	x = 0;
 	y = 0;
-	margin = 100;
-	maxmax = (vars->maxx * (vars->maxx >= vars->maxy)
-			+ vars->maxy * (vars->maxy > vars->maxx));
 	while (y < vars->maxy)
 	{
 		while (x < vars->maxx)
 		{
-			vars->links[y][x].x = 512 + ((412 / maxmax) * -(y - x) + vars->viewx / vars->zoom) * vars->zoom;
-			vars->links[y][x].y = margin + ((200 / maxmax * (x + y))
-						- vars->links[y][x].z * vars->ampl + vars->viewy / vars->zoom) * vars->zoom;
+			ft_cmatrix_application(vars, x, y);
 			x++;
-			//ft_printf("==============\nx = %d / y = %d\ninit x  = %d / init y = %d\n", vars->links[y][x].x, vars->links[y][x].y, x, y);
 		}
 		y++;
 		x = 0;

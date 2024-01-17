@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 21:50:56 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/14 18:18:49 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/17 18:02:51 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,15 @@ int	ft_keyboard(int keycode, void *vars)
 	if (keycode == 41)
 		ft_close(v);
 	else if (keycode == 82 || keycode == 81)
-	{
 		ft_ampl(v, keycode);
+	else if (keycode == 21)
+	{
+		v->viewx = 0;
+		v->viewy = 0;
+		v->ampl = 1;
+		v->cmatrix = v->imatrix;
+		ft_clear_img(vars);
+		ft_fdf(vars);
 	}
 	return (0);
 }

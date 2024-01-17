@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:59:46 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/14 17:32:18 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/17 18:38:06 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,10 @@ void	ft_z_filler(t_vars *vars, t_list *lst_map, t_list *lst_tmp)
 	while (s_word[vars->maxx])
 	{
 		vars->links[vars->maxy][vars->maxx].z = ft_atoi(s_word[vars->maxx]);
+		if (vars->links[vars->maxy][vars->maxx].z > vars->maxz)
+			vars->maxz = vars->links[vars->maxy][vars->maxx].z;
+		else if (vars->links[vars->maxy][vars->maxx].z < vars->minz)
+			vars->minz = vars->links[vars->maxy][vars->maxx].z;
 		vars->maxx ++;
 	}
 	ft_closesplit(s_word);
