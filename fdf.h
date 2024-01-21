@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:04:48 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/17 18:44:29 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/21 19:52:17 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ typedef struct s_point
 	int				x;
 	int				y;
 	int				z;
-	unsigned int	color;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
 }		t_point;
 
 typedef struct s_matrix
@@ -87,8 +89,8 @@ t_matrix	ft_imatrix(void);
 t_matrix	ft_rx(int c);
 t_matrix	ft_rz(int c);
 t_matrix	ft_init_matrix(int row, int col);
-void		ft_matrix_mult_one(t_matrix *m, int nb);
-void		ft_matrix_div_one(t_matrix *m, int nb);
+void		ft_matrix_mult_one(t_matrix *m, double nb);
+void		ft_matrix_div_one(t_matrix *m, double nb);
 void		ft_cmatrix_application(t_vars *vars, int i, int j);
 int			ft_printf(const char *str, ...);
 t_matrix	ft_matrix_multiplication(t_matrix m1, t_matrix m2);

@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:46:57 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/17 18:34:52 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/21 16:01:58 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,12 @@ void	ft_matrix_rotation(t_vars *vars, int px, int py)
 	vars->links[py][px].y = y * cos(1) - z * sin(1) + vars->viewy;
 }
 
-void	ft_bigcalcul(t_vars *vars, int x, int y)
-{
-	float	maxmax;
-
-	maxmax = (vars->maxx * (vars->maxx >= vars->maxy)
-			+ vars->maxy * (vars->maxy > vars->maxx));
-	vars->links[y][x].x = 512+ (412 / maxmax * (x - y));
-	vars->links[y][x].y = 100 + (200 / maxmax * (x + y)) - vars->links[y][x].z;
-}
-
-
-
 // taile de la fenêtre 1024 * 600
 void	ft_placer(t_vars *vars)
 {
 	int		x;
 	int		y;
+	float	maxmax;
 
 	x = 0;
 	y = 0;

@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:21:44 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/17 18:39:31 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/20 18:37:59 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_varsinit(t_vars *vars)
 	vars->init_crx = 0;
 	vars->right_click = 0;
 	vars->imatrix = ft_imatrix();
-	ft_matrix_mult_one(&vars->imatrix, 15);
 	vars->cmatrix = vars->imatrix;
 	vars->bmatrix = vars->imatrix;
 	vars->rx = ft_rx(vars->crx);
@@ -84,10 +83,14 @@ void	ft_read_file(t_vars *vars, int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_vars	vars[1];
+	double		maxmax;
 
 	ft_varsinit(vars);
 	ft_read_file(vars, argc, argv);
 	ft_parse(vars);
+	maxmax = (vars->maxx * (vars->maxx >= vars->maxy)
+			+ vars->maxy * (vars->maxy > vars->maxx));
+	ft_matrix_mult_one(&vars->imatrix, 300/maxmax);
 	ft_fdf(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	mlx_on_event(vars->mlx, vars->win, 0, ft_keyboard, vars);

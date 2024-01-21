@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:18:40 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/17 18:10:08 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/21 20:43:26 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_mousewheel(int keycode, void *vars)
 	{
 		ft_clear_img(vars);
 		if (keycode == 1)
-			ft_matrix_mult_one(&v->cmatrix, 2);
+			ft_matrix_mult_one(&v->cmatrix, 2.0);
 		else if (keycode == 2)
-			ft_matrix_div_one(&v->cmatrix, 2);
+			ft_matrix_div_one(&v->cmatrix, 2.0);
 		ft_fdf(vars);
 	}
 	return (0);

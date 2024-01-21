@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:45:16 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/17 18:07:24 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/21 15:35:11 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ t_matrix	ft_rx(int c)
 	double		teta;
 
 	teta = -(PI / (double)100 + c / (double)250);
-	// if (teta < 0)
-	// 	teta = 0;
-	// else if (teta > 0.4)
-	// 	teta = 0.4;
 	rx = ft_init_matrix(3, 3);
 	rx.content[0][0] = 1;
 	rx.content[0][1] = 0;
