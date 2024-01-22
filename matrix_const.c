@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:45:16 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/22 03:57:43 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 00:35:38 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ t_matrix	ft_imatrix(void)
 
 // 	imatrix = ft_init_matrix(3, 3);
 // 	imatrix.content[0][0] = 1;
-// 	imatrix.content[0][1] = 0;
+// 	imatrix.content[0][1] = -1;
 // 	imatrix.content[0][2] = 0;
-// 	imatrix.content[1][0] = 0;
-// 	imatrix.content[1][1] = 1;
-// 	imatrix.content[1][2] = 0;
-// 	imatrix.content[2][0] = 0;
-// 	imatrix.content[2][1] = 0;
-// 	imatrix.content[2][2] = 1;
+// 	imatrix.content[1][0] = 1/2.0;
+// 	imatrix.content[1][1] = 1/2.0;
+// 	imatrix.content[1][2] = -2/3.0;
+// 	imatrix.content[2][0] = 2/3.0;
+// 	imatrix.content[2][1] = 2/3.0;
+// 	imatrix.content[2][2] = 1/2.0;
 // 	return (imatrix);
 // }

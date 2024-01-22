@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:04:48 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/22 04:14:41 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 00:30:36 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # endif
 
 //16 / 9
-
 # ifndef WIDTH
 #  define WIDTH 1024
 # endif
@@ -107,5 +106,6 @@ void		ft_matrix_div_one(t_matrix *m, double nb);
 void		ft_cmatrix_application(t_vars *vars, int i, int j);
 int			ft_printf(const char *str, ...);
 t_matrix	ft_matrix_multiplication(t_matrix m1, t_matrix m2);
+void		ft_check_cam_position(t_vars *v);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:21:44 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/22 04:02:18 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/22 22:39:49 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_close(t_vars *vars)
 void	ft_fdf(t_vars *vars)
 {
 	ft_placer(vars);
-	ft_position_links(vars);
+	ft_check_cam_position(vars);
 }
 
 void	ft_varsinit(t_vars *vars)

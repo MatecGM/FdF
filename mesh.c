@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 23:19:38 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/22 01:51:00 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 00:02:01 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	ft_color(t_point *p, t_vars *v, int z)
 	//color = (255<<24) + (r<<16) + (g<<8) + b;
 }
 
-void	ft_possible_links(t_vars *vars, int *c)
+void	ft_possible_links(t_vars *vars, int *c, int *q, int *nav)
 {
 	t_point	p1;
 	t_point	p2;
@@ -116,44 +116,79 @@ void	ft_possible_links(t_vars *vars, int *c)
 	p1.x = vars->links[c[1]][c[0]].x;
 	p1.y = vars->links[c[1]][c[0]].y;
 	ft_color(&p1, vars, vars->links[c[1]][c[0]].z);
-	if (c[0] + 1 < vars->maxx && c[0] + 1 > 0)
+	if (c[0] + q[0] != nav[2] && c[0] + q[0] != nav[0])
 	{
-		p2.x = vars->links[c[1]][c[0] + 1].x;
-		p2.y = vars->links[c[1]][c[0] + 1].y;
-		ft_color(&p2, vars, vars->links[c[1]][c[0] + 1].z);
+		p2.x = vars->links[c[1]][c[0] + q[0]].x;
+		p2.y = vars->links[c[1]][c[0] + q[0]].y;
+		ft_color(&p2, vars, vars->links[c[1]][c[0] + q[0]].z);
 		ft_link_point_x(vars, p1, p2);
 	}
-	if (c[1] + 1 < vars->maxy && c[1] + 1 > 0)
+	if (c[1] + q[1] != nav[3] && c[1] + q[1] != nav[1])
 	{
-		p2.x = vars->links[c[1] + 1][c[0]].x;
-		p2.y = vars->links[c[1] + 1][c[0]].y;
-		ft_color(&p2, vars, vars->links[c[1] + 1][c[0]].z);
+		p2.x = vars->links[c[1] + q[1]][c[0]].x;
+		p2.y = vars->links[c[1] + q[1]][c[0]].y;
+		ft_color(&p2, vars, vars->links[c[1] + q[1]][c[0]].z);
 		ft_link_point_x(vars, p1, p2);
 	}
 }
 
-void	ft_position_links(t_vars *vars)
+int	*ft_init_navigation(t_vars *v, int *nav, int *q)
+{
+	nav[0] = 0;
+	nav[1] = 0;
+	nav[2] = v->maxx;
+	nav[3] = v->maxy;
+	if (q[0] == -1)
+	{
+		nav[0] = v->maxx -1;
+		nav[2] = -1;
+	}
+	if (q[1] == -1)
+	{
+		nav[1] = v->maxy - 1;
+		nav[3] = -1;
+	}
+	return (nav);
+}
+
+void	ft_navigation(t_vars *v, int *q)
 {
 	int	coord[2];
+	int	*nav;
 
-	coord[1] = 0;
-	while (coord[1] < vars->maxy)
+	nav = ft_calloc(sizeof(int), 4);
+	nav = ft_init_navigation(v, nav, q);
+	coord[1] = nav[1];
+	while (coord[1] != nav[3])
 	{
-		coord[0] = 0;
-		while (coord[0] < vars->maxx)
+		coord[0] = nav[0];
+		while (coord[0] != nav[2])
 		{
-			ft_possible_links(vars, coord);
-			coord[0]++;
+			//ft_printf("%d et %d\n", coord[0], coord[1]);
+			ft_possible_links(v, coord, q, nav);
+			coord[0] += q[0];
 		}
-		coord[1]++;
+		coord[1] += q[1];
 	}
-	ft_color(&vars->links[coord[1] - 1][coord[0] - 1], 
-		vars, vars->links[coord[1] - 1][coord[0] - 1].z);
-	mlx_set_image_pixel(vars->mlx, vars->img,
-		vars->links[coord[1] - 1][coord[0] - 1].x,
-		vars->links[coord[1] - 1][coord[0] - 1].y, 
-		(unsigned int)(255<<24) 
-		+ (vars->links[coord[1] - 1][coord[0] - 1].r<<16) 
-		+ (vars->links[coord[1] - 1][coord[0] - 1].g<<8) 
-		+ vars->links[coord[1] - 1][coord[0] - 1].b);
+	free(nav);
+}
+
+void	ft_check_cam_position(t_vars *v)
+{
+	double	**m;
+	int		q[2];
+
+	q[0] = 1;
+	q[1] = 1;
+	m = v->cmatrix.content;
+	if (m[2][0] < 0 && m[2][1] >= 0)
+		q[0] = -1;
+	else if (m[2][0] < 0 && m[2][1] < 0)
+	{
+		q[0] = -1;
+		q[1] = -1;
+	}
+	else if (m[2][0] >= 0 && m[2][1] < 0)
+		q[1] = -1;
+	ft_navigation(v, q);
 }
