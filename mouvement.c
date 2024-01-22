@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:18:40 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/21 20:43:26 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/22 04:16:23 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,32 @@ int	ft_mouseup(int keycode, void *vars)
 	return (0);
 }
 
+void	ft_rotation(t_vars *v)
+{
+	int maxmax;
+
+	mlx_mouse_get_pos(v->mlx, &v->crz, &v->crx);
+	v->crz -= v->init_crz;
+	v->crx -= v->init_crx;
+	v->rz = ft_rz(v->crz);
+	printf("\n\n%f %f %f\n%f %f %f\n%f %f %f\n", v->cmatrix.content[0][0],  v->cmatrix.content[0][1],  v->cmatrix.content[0][2], 
+	  			v->cmatrix.content[1][0], v->cmatrix.content[1][1],  v->cmatrix.content[1][2], 
+	  			v->cmatrix.content[2][0], 	v->cmatrix.content[2][1],  v->cmatrix.content[2][2]);
+
+	if (v->cmatrix.content[2][2] > 0)
+		v->minrx = v->crx;
+	 if (v->cmatrix.content[1][2] < 0)
+	 	v->maxrx = v->crx;
+	if (v->minrx <= v->crx && v->maxrx >= v->crx)
+		v->rx = ft_rx(v->crx);
+	v->cmatrix = ft_matrix_multiplication(v->rz, v->bmatrix);
+
+
+	v->cmatrix = ft_matrix_multiplication(v->cmatrix, v->rx);
+	ft_clear_img(v);
+	ft_fdf(v);
+}
+
 int	ft_position(void *vars)
 {
 	t_vars	*v;
@@ -77,16 +103,7 @@ int	ft_position(void *vars)
 	}
 	else if (v->right_click == 1)
 	{
-		mlx_mouse_get_pos(v->mlx, &v->crz, &v->crx);
-		v->crz -= v->init_crz;
-		v->crx -= v->init_crx;
-
-		v->rz = ft_rz(v->crz);
-		v->rx = ft_rx(v->crx);
-		v->cmatrix = ft_matrix_multiplication(v->rz, v->bmatrix);
-		v->cmatrix = ft_matrix_multiplication(v->cmatrix, v->rx);
-		ft_clear_img(v);
-		ft_fdf(v);
+		ft_rotation(v);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:04:48 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/21 19:52:17 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/22 04:14:41 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 
 # ifndef PI
 #  define PI 3.1415926535
+# endif
+
+//16 / 9
+
+# ifndef WIDTH
+#  define WIDTH 1024
+# endif
+
+# ifndef HEIGHT
+#  define HEIGHT 600
 # endif
 
 # include <stdio.h>
@@ -65,6 +75,9 @@ typedef struct s_vars {
 	t_matrix	bmatrix;
 	t_matrix	rx;
 	t_matrix	rz;
+	
+	int			minrx;
+	int			maxrx;
 	int			init_crz;
 	int			crz;
 	int			init_crx;
@@ -86,7 +99,7 @@ int			ft_mousedown(int keycode, void *vars);
 int			ft_mouseup(int keycode, void *vars);
 int			ft_position(void *vars);
 t_matrix	ft_imatrix(void);
-t_matrix	ft_rx(int c);
+t_matrix	ft_rx(double c);
 t_matrix	ft_rz(int c);
 t_matrix	ft_init_matrix(int row, int col);
 void		ft_matrix_mult_one(t_matrix *m, double nb);

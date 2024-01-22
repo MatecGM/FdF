@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 23:19:38 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/21 20:41:15 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/22 01:51:00 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_link_point_y(t_vars *vars, t_point p1, t_point p2)
 	{
 		x = y * d;
 		color = ft_gradient(p1, p2, y, p2.y - p1.y);
-		if ((x + p1.x >= 0 && x + p1.x < 1024)
-			&& (y + p1.y >= 0 && y + p1.y < 600))
+		if ((x + p1.x >= 0 && x + p1.x < WIDTH)
+			&& (y + p1.y >= 0 && y + p1.y < HEIGHT))
 			mlx_set_image_pixel(vars->mlx, vars->img,
 				p1.x + x, p1.y + y, color);
 		y += b;
@@ -76,8 +76,8 @@ void	ft_link_point_x(t_vars *vars, t_point p1, t_point p2)
 		{
 			y = x * d;
 			color = ft_gradient(p1, p2, x, p2.x - p1.x);
-			if ((x + p1.x >= 0 && x + p1.x < 1024)
-				&& (y + p1.y >= 0 && y + p1.y < 600))
+			if ((x + p1.x >= 0 && x + p1.x < WIDTH)
+				&& (y + p1.y >= 0 && y + p1.y < HEIGHT))
 				mlx_set_image_pixel(vars->mlx, vars->img,
 					p1.x + x, p1.y + y, color);
 			x += b;

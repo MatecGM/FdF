@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:46:57 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/21 16:01:58 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/22 01:49:49 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	ft_clear_img(t_vars *vars)
 	int	y;
 
 	y = 0;
-	while (y < 600)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < 1024)
+		while (x < WIDTH)
 		{
 			mlx_set_image_pixel(vars->mlx, vars->img, x, y, 0xFF000000);
 			x ++;
