@@ -6,38 +6,38 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 23:19:38 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 16:22:02 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 19:29:40 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-unsigned int ft_gradient(t_point p1, t_point p2, int i, int max)
+unsigned int	ft_gradient(t_point p1, t_point p2, int i, int max)
 {
 	unsigned int	color;
 
-	if(p1.r < p2.r)
+	if (p1.r < p2.r)
 		p1.r = p1.r + (p2.r - p1.r) * (i / (double)max);
-	else if(p1.r > p2.r)
+	else if (p1.r > p2.r)
 		p1.r = p1.r - (p1.r - p2.r) * (i / (double)max);
-	if(p1.g < p2.g)
+	if (p1.g < p2.g)
 		p1.g = p1.g + (p2.g - p1.g) * (i / (double)max);
-	else if(p1.g > p2.g)
+	else if (p1.g > p2.g)
 		p1.g = p1.g - (p1.g - p2.g) * (i / (double)max);
-	if(p1.b < p2.b)
+	if (p1.b < p2.b)
 		p1.b = p1.b + (p2.b - p1.b) * (i / (double)max);
-	else if(p1.b > p2.b)
+	else if (p1.b > p2.b)
 		p1.b = p1.b - (p1.b - p2.b) * (i / (double)max);
-	color = (255<<24) + (p1.r<<16) + (p1.g<<8) + p1.b;
-	return(color);
+	color = (255 << 24) + (p1.r << 16) + (p1.g << 8) + p1.b;
+	return (color);
 }
 
 void	ft_link_point_y(t_vars *vars, t_point p1, t_point p2)
 {
-	int		x;
-	int		y;
-	float	d;
-	int		b;
+	int				x;
+	int				y;
+	float			d;
+	int				b;
 	unsigned int	color;
 
 	x = 0;
@@ -89,7 +89,7 @@ void	ft_color(t_point *p, t_vars *v, int z)
 {
 	unsigned int	color;
 	double			midz;
-	
+
 	midz = (v->maxz - v->minz) / (double)2 + v->minz;
 	p->r = 0;
 	p->g = 0;
@@ -97,7 +97,7 @@ void	ft_color(t_point *p, t_vars *v, int z)
 	if (z > v->minz && z <= midz)
 	{
 		p->g = 255 * ((z - v->minz) / (double)(midz - v->minz));
-		p->b = 255 - 255 * ((z - v->minz) / (double)(midz - v->minz));;
+		p->b = 255 - 255 * ((z - v->minz) / (double)(midz - v->minz));
 	}
 	else if (z > midz && z <= v->maxz)
 	{
@@ -105,7 +105,6 @@ void	ft_color(t_point *p, t_vars *v, int z)
 		p->g = 255 - 255 * ((z - midz) / (double)(v->maxz - midz));
 		p->b = 0;
 	}
-	//color = (255<<24) + (r<<16) + (g<<8) + b;
 }
 
 void	ft_possible_links(t_vars *vars, int *c, int *q, int *nav)
@@ -164,7 +163,6 @@ void	ft_navigation(t_vars *v, int *q)
 		coord[0] = nav[0];
 		while (coord[0] != nav[2])
 		{
-			//ft_printf("%d et %d\n", coord[0], coord[1]);
 			ft_possible_links(v, coord, q, nav);
 			coord[0] += q[0];
 		}

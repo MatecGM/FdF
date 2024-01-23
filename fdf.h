@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:04:48 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 19:01:57 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 19:25:41 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ typedef struct s_vars {
 	t_matrix	bmatrix;
 	t_matrix	rx;
 	t_matrix	rz;
-	
+
 	int			minrx;
 	int			maxrx;
-	
+
 	int			init_crz;
 	int			crz;
 	int			init_crx;

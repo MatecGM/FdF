@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:21:44 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 18:18:37 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 19:32:23 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_close(t_vars *vars)
 	}
 	if (vars->fd < 0)
 		close(vars->fd);
-	//ft_clear_matrix(&vars->imatrix);
 	ft_clear_matrix(&vars->cmatrix);
 	ft_clear_matrix(&vars->rz);
 	ft_clear_matrix(&vars->rx);
@@ -94,7 +93,7 @@ int	main(int argc, char **argv)
 	ft_parse(vars);
 	maxmax = (vars->maxx * (vars->maxx >= vars->maxy)
 			+ vars->maxy * (vars->maxy > vars->maxx));
-	ft_matrix_mult_one(&vars->imatrix, HEIGHT / 2 / maxmax); 
+	ft_matrix_mult_one(&vars->imatrix, HEIGHT / 2 / maxmax);
 	ft_fdf(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	mlx_on_event(vars->mlx, vars->win, 0, ft_keyboard, vars);

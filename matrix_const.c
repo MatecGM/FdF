@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:45:16 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 18:11:09 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 19:27:08 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 t_matrix	ft_rx(double c)
 {
-	t_matrix 	rx;
+	t_matrix	rx;
 	double		teta;
 
-	//printf();
 	teta = -(c / (double)250);
 	rx = ft_init_matrix(3, 3);
 	rx.content[0][0] = 1;
@@ -53,7 +52,7 @@ t_matrix	ft_rz(int c)
 
 t_matrix	ft_imatrix(void)
 {
-	t_matrix imatrix;
+	t_matrix	imatrix;
 
 	imatrix = ft_init_matrix(3, 3);
 	imatrix.content[0][0] = 1;
@@ -67,20 +66,3 @@ t_matrix	ft_imatrix(void)
 	imatrix.content[2][2] = 1;
 	return (imatrix);
 }
-
-// t_matrix	ft_bimatrix(void)
-// {
-// 	t_matrix imatrix;
-
-// 	imatrix = ft_init_matrix(3, 3);
-// 	imatrix.content[0][0] = 1;
-// 	imatrix.content[0][1] = -1;
-// 	imatrix.content[0][2] = 0;
-// 	imatrix.content[1][0] = 1/2.0;
-// 	imatrix.content[1][1] = 1/2.0;
-// 	imatrix.content[1][2] = -2/3.0;
-// 	imatrix.content[2][0] = 2/3.0;
-// 	imatrix.content[2][1] = 2/3.0;
-// 	imatrix.content[2][2] = 1/2.0;
-// 	return (imatrix);
-// }

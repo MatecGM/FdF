@@ -6,16 +6,11 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:46:57 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/22 01:49:49 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 19:31:49 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-
-// 1          0           0
-// 0          cos(teta)   sin(teta)
-// 0          sin(teta)   cos(teta)
 
 void	ft_matrix_rotation(t_vars *vars, int px, int py)
 {

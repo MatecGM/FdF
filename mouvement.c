@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:18:40 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 18:19:42 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 19:31:12 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_mousewheel(int keycode, void *vars)
 	t_vars	*v;
 
 	v = (t_vars *) vars;
-	if (keycode == 1|| keycode == 2)
+	if (keycode == 1 || keycode == 2)
 	{
 		ft_clear_img(vars);
 		if (keycode == 1 && v->zoom < 3)
@@ -64,27 +64,23 @@ int	ft_mouseup(int keycode, void *vars)
 	if (keycode == 1)
 		v->left_click = 0;
 	else if (keycode == 3)
-	 	v->right_click = 0;
+		v->right_click = 0;
 	return (0);
 }
 
 void	ft_rotation(t_vars *v)
 {
-	int maxmax;
+	int	maxmax;
 
 	mlx_mouse_get_pos(v->mlx, &v->crz, &v->crx);
 	v->crz -= v->init_crz;
 	v->crx -= v->init_crx;
 	ft_clear_matrix(&v->rz);
 	v->rz = ft_rz(v->crz);
-	// printf("\n\n%f %f %f\n%f %f %f\n%f %f %f\n", v->cmatrix.content[0][0],  v->cmatrix.content[0][1],  v->cmatrix.content[0][2], 
-	//   			v->cmatrix.content[1][0], v->cmatrix.content[1][1],  v->cmatrix.content[1][2], 
-	//   			v->cmatrix.content[2][0], 	v->cmatrix.content[2][1],  v->cmatrix.content[2][2]);
-
 	if (v->cmatrix.content[2][2] > 0)
 		v->minrx = v->crx;
-	 if (v->cmatrix.content[1][2] < 0)
-	 	v->maxrx = v->crx;
+	if (v->cmatrix.content[1][2] < 0)
+		v->maxrx = v->crx;
 	if (v->minrx <= v->crx && v->maxrx >= v->crx)
 	{
 		ft_clear_matrix(&v->rx);
