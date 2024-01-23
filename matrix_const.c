@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:45:16 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 00:35:38 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 18:11:09 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_matrix	ft_rx(double c)
 	t_matrix 	rx;
 	double		teta;
 
-	//printf(c);
+	//printf();
 	teta = -(c / (double)250);
 	rx = ft_init_matrix(3, 3);
 	rx.content[0][0] = 1;
@@ -68,7 +68,7 @@ t_matrix	ft_imatrix(void)
 	return (imatrix);
 }
 
-// t_matrix	ft_imatrix(void)
+// t_matrix	ft_bimatrix(void)
 // {
 // 	t_matrix imatrix;
 

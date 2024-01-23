@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:04:48 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 00:30:36 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 19:01:57 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 
 //16 / 9
 # ifndef WIDTH
-#  define WIDTH 1024
+#  define WIDTH 1920
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 600
+#  define HEIGHT 1080
 # endif
 
 # include <stdio.h>
@@ -61,6 +61,7 @@ typedef struct s_vars {
 	int			minz;
 	int			maxz;
 	int			fd;
+	int			zoom;
 
 	int			viewx;
 	int			viewy;
@@ -70,6 +71,7 @@ typedef struct s_vars {
 	int			right_click;
 
 	t_matrix	imatrix;
+	t_matrix	bimatrix;
 	t_matrix	cmatrix;
 	t_matrix	bmatrix;
 	t_matrix	rx;
@@ -77,6 +79,7 @@ typedef struct s_vars {
 	
 	int			minrx;
 	int			maxrx;
+	
 	int			init_crz;
 	int			crz;
 	int			init_crx;
@@ -107,5 +110,5 @@ void		ft_cmatrix_application(t_vars *vars, int i, int j);
 int			ft_printf(const char *str, ...);
 t_matrix	ft_matrix_multiplication(t_matrix m1, t_matrix m2);
 void		ft_check_cam_position(t_vars *v);
-
+void		ft_clear_matrix(t_matrix *m);
 #endif

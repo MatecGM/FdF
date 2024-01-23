@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 23:03:01 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/22 01:48:39 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:43:19 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,31 @@ t_matrix	ft_init_matrix(int row, int col)
 
 	m.row = row;
 	m.col = col;
-	m.content = ft_calloc(sizeof(float *), row);
+	m.content = ft_calloc(sizeof(double *), row);
 	if (!m.content)
 		return (m);
 	i = 0;
 	while (i < row)
 	{
-		m.content[i] = ft_calloc(sizeof(float), col);
+		m.content[i] = ft_calloc(sizeof(double), col);
 		if (!m.content[i])
 			return (m);
 		i ++;
 	}
 	return (m);
+}
+
+void	ft_clear_matrix(t_matrix *m)
+{
+	int			i;
+
+	i = 0;
+	while (i < m->row)
+	{
+		free(m->content[i]);
+		i ++;
+	}
+	free(m->content);
 }
 
 

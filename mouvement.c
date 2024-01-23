@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:18:40 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 00:30:47 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 18:19:42 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@ int	ft_mousewheel(int keycode, void *vars)
 	if (keycode == 1|| keycode == 2)
 	{
 		ft_clear_img(vars);
-		if (keycode == 1)
+		if (keycode == 1 && v->zoom < 3)
+		{
+			v->zoom ++;
 			ft_matrix_mult_one(&v->cmatrix, 2.0);
-		else if (keycode == 2)
+		}
+		else if (keycode == 2 && v->zoom > -3)
+		{
+			v->zoom --;
 			ft_matrix_div_one(&v->cmatrix, 2.0);
+		}
 		ft_fdf(vars);
 	}
 	return (0);
@@ -69,20 +75,22 @@ void	ft_rotation(t_vars *v)
 	mlx_mouse_get_pos(v->mlx, &v->crz, &v->crx);
 	v->crz -= v->init_crz;
 	v->crx -= v->init_crx;
+	ft_clear_matrix(&v->rz);
 	v->rz = ft_rz(v->crz);
-	printf("\n\n%f %f %f\n%f %f %f\n%f %f %f\n", v->cmatrix.content[0][0],  v->cmatrix.content[0][1],  v->cmatrix.content[0][2], 
-	  			v->cmatrix.content[1][0], v->cmatrix.content[1][1],  v->cmatrix.content[1][2], 
-	  			v->cmatrix.content[2][0], 	v->cmatrix.content[2][1],  v->cmatrix.content[2][2]);
+	// printf("\n\n%f %f %f\n%f %f %f\n%f %f %f\n", v->cmatrix.content[0][0],  v->cmatrix.content[0][1],  v->cmatrix.content[0][2], 
+	//   			v->cmatrix.content[1][0], v->cmatrix.content[1][1],  v->cmatrix.content[1][2], 
+	//   			v->cmatrix.content[2][0], 	v->cmatrix.content[2][1],  v->cmatrix.content[2][2]);
 
 	if (v->cmatrix.content[2][2] > 0)
 		v->minrx = v->crx;
 	 if (v->cmatrix.content[1][2] < 0)
 	 	v->maxrx = v->crx;
 	if (v->minrx <= v->crx && v->maxrx >= v->crx)
+	{
+		ft_clear_matrix(&v->rx);
 		v->rx = ft_rx(v->crx);
+	}
 	v->cmatrix = ft_matrix_multiplication(v->rz, v->bmatrix);
-
-
 	v->cmatrix = ft_matrix_multiplication(v->cmatrix, v->rx);
 	ft_clear_img(v);
 	ft_fdf(v);

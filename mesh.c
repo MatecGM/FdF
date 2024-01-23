@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 23:19:38 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 00:02:01 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/23 16:22:02 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ void	ft_link_point_x(t_vars *vars, t_point p1, t_point p2)
 {
 	int				x;
 	int				y;
-	float			d;
+	double			d;
 	int				b;
 	unsigned int	color;
 
 	x = 0;
 	y = 0;
-	d = (float)(p2.y - p1.y) / (float)(p2.x - p1.x);
+	d = (double)(p2.y - p1.y) / (double)(p2.x - p1.x);
 	if (d > 1 || d < -1)
 		ft_link_point_y(vars, p1, p2);
 	else
