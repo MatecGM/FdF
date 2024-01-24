@@ -6,18 +6,18 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:59:46 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 19:30:23 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/24 18:51:22 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_countrow(char **s_word)
+int	ft_countrow(char **s_w)
 {
 	int	i;
 
 	i = 0;
-	while (s_word[i])
+	while (s_w[i])
 		i++;
 	return (i);
 }
@@ -62,36 +62,33 @@ t_list	*get_file_line(t_vars *vars, t_list *lst_map)
 	return (lst_map);
 }
 
-void	ft_z_filler(t_vars *vars, t_list *lst_map, t_list *lst_tmp)
+void	ft_z_filler(t_vars *v, t_list *lst_map, t_list *lst_tmp)
 {
-	char	**s_word;
+	char	**s_w;
 
-	s_word = ft_split((char *)(lst_map->content), ' ');
-	if (!s_word)
+	s_w = ft_split((char *)(lst_map->content), ' ');
+	if (!s_w)
 	{
 		ft_lstclear(&lst_tmp, free);
-		ft_close(vars);
+		ft_close(v);
 	}
-	vars->links[vars->maxy] = ft_calloc(sizeof(t_point),
-			ft_countrow(s_word) + 1);
-	if (!vars->links[vars->maxy]
-		|| (ft_countrow(s_word) != vars->maxx && vars->maxx != 0))
+	v->links[v->maxy] = ft_calloc(sizeof(t_point), ft_countrow(s_w) + 1);
+	if (!v->links[v->maxy] || (ft_countrow(s_w) != v->maxx && v->maxx != 0))
 	{
-		ft_closesplit(s_word);
+		ft_closesplit(s_w);
 		ft_lstclear(&lst_tmp, free);
-		ft_close(vars);
+		ft_close(v);
 	}
-	vars->maxx = 0;
-	while (s_word[vars->maxx])
+	v->maxx = -1;
+	while (s_w[++ v->maxx])
 	{
-		vars->links[vars->maxy][vars->maxx].z = ft_atoi(s_word[vars->maxx]);
-		if (vars->links[vars->maxy][vars->maxx].z > vars->maxz)
-			vars->maxz = vars->links[vars->maxy][vars->maxx].z;
-		else if (vars->links[vars->maxy][vars->maxx].z < vars->minz)
-			vars->minz = vars->links[vars->maxy][vars->maxx].z;
-		vars->maxx ++;
+		v->links[v->maxy][v->maxx].z = ft_atoi(s_w[v->maxx]);
+		if (v->links[v->maxy][v->maxx].z > v->maxz)
+			v->maxz = v->links[v->maxy][v->maxx].z;
+		else if (v->links[v->maxy][v->maxx].z < v->minz)
+			v->minz = v->links[v->maxy][v->maxx].z;
 	}
-	ft_closesplit(s_word);
+	ft_closesplit(s_w);
 }
 
 void	ft_parse(t_vars *vars)

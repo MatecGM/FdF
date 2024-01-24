@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:34:13 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/10 17:26:55 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/24 16:51:01 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ char	*clean_buffer(char *buffer, int *error)
 	len = ft_strbanlen(buffer, '\n');
 	bufferlen = ft_strbanlen(buffer, 0);
 	if (len == bufferlen)
-		return (ft_freeall_gnl(buffer, NULL));
+	{
+		ft_freeall_gnl(buffer, NULL);
+		return (NULL);
+	}
 	tmp = buffer;
 	buffer = ft_calloc((bufferlen - len + 1), sizeof(char));
 	if (!buffer)

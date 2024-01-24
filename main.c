@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:21:44 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 19:32:23 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/24 18:41:36 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_close(t_vars *vars)
 	}
 	if (vars->fd < 0)
 		close(vars->fd);
-	ft_clear_matrix(&vars->cmatrix);
+	ft_clear_matrix(&vars->imatrix);
 	ft_clear_matrix(&vars->rz);
 	ft_clear_matrix(&vars->rx);
 	mlx_loop_end(vars->mlx);
