@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"mlx.h": "c",
-		"random": "c"
+		"random": "c",
+		"fcntl.h": "c"
 	}
 }

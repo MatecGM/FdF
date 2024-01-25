@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:18:40 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/24 18:33:39 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/25 18:15:41 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,11 @@ int	ft_mouseup(int keycode, void *vars)
 
 void	ft_rotation(t_vars *v)
 {
-	int	maxmax;
-
 	mlx_mouse_get_pos(v->mlx, &v->crz, &v->crx);
 	v->crz -= v->init_crz;
 	v->crx -= v->init_crx;
 	ft_clear_matrix(&v->rz);
-	v->rz = ft_rz(v->crz);
+	v->rz = ft_rz(v->crz, v);
 	if (v->cmatrix.content[2][2] > 0)
 		v->minrx = v->crx;
 	if (v->cmatrix.content[1][2] < 0)
@@ -84,10 +82,10 @@ void	ft_rotation(t_vars *v)
 	if (v->minrx <= v->crx && v->maxrx >= v->crx)
 	{
 		ft_clear_matrix(&v->rx);
-		v->rx = ft_rx(v->crx);
+		v->rx = ft_rx(v->crx, v);
 	}
-	v->cmatrix = ft_matrix_multiplication(v->rz, v->bmatrix);
-	v->cmatrix = ft_matrix_multiplication(v->cmatrix, v->rx);
+	v->cmatrix = ft_matrix_multiplication(v->rz, v->bmatrix, v);
+	v->cmatrix = ft_matrix_multiplication(v->cmatrix, v->rx, v);
 	ft_clear_img(v);
 	ft_fdf(v);
 }

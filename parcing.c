@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:59:46 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/24 18:51:22 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/25 18:23:34 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ void	ft_closesplit(char **splitted_char)
 	free(splitted_char);
 }
 
-t_list	*get_file_line(t_vars *vars, t_list *lst_map)
+t_list	*get_file_line(t_vars *vars)
 {
 	char	*line;
 	t_list	*lst_tmp;
+	t_list	*lst_map;
 
 	line = get_next_line(vars->fd);
 	if (!line)
@@ -96,7 +97,7 @@ void	ft_parse(t_vars *vars)
 	t_list	*lst_map;
 	t_list	*lst_tmp;
 
-	lst_map = get_file_line(vars, lst_map);
+	lst_map = get_file_line(vars);
 	vars->links = ft_calloc(sizeof(t_point *), vars->maxy + 1);
 	vars->maxy = 0;
 	if (!vars->links)

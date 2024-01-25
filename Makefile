@@ -1,6 +1,6 @@
 CC = cc
 
-#FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 NAME = fdf
 
@@ -12,6 +12,7 @@ SRCS = main.c\
 		mouvement.c\
 		matrix.c\
 		matrix_const.c\
+		color.c\
 		printf/ft_printf.c\
 		printf/ft_libft.c\
 		printf/ft_putnbr.c\
@@ -27,7 +28,7 @@ LIBFT = libft/libft.a
 all : $(NAME)
 
 $(NAME): $(OBJS) $(MLX) $(LIBFT)
-	$(CC) -g  $(OBJS) -o $(NAME) -lXext -lX11 $(MLX) $(LIBFT) -lSDL2 -lm
+	$(CC) $(FLAGS) -g  $(OBJS) -o $(NAME) -lXext -lX11 $(MLX) $(LIBFT) -lSDL2 -lm
 
 $(MLX):
 	make -C MacroLibX -j
@@ -36,7 +37,7 @@ $(LIBFT):
 	make -C libft -j
 
 .c.o:
-	$(CC) -g $(FLAGS) -I/usr/include -I./MacroLibX/includes -I./libft -O3 -c $< -o $@
+	$(CC) $(FLAGS) -g $(FLAGS) -I/usr/include -I./MacroLibX/includes -I./libft -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -46,7 +47,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make -C libft fclean
-#make -C MacroLibX fclean
+	make -C MacroLibX fclean
 
 re: fclean all
 

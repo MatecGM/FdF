@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:46:57 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/24 18:24:22 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/25 18:27:38 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_placer(t_vars *vars)
 {
 	int		x;
 	int		y;
-	float	maxmax;
 
 	x = 0;
 	y = 0;
@@ -44,6 +43,26 @@ void	ft_placer(t_vars *vars)
 		y++;
 		x = 0;
 	}
+}
+
+void	ft_check_cam_position(t_vars *v)
+{
+	double	**m;
+	int		q[2];
+
+	q[0] = 1;
+	q[1] = 1;
+	m = v->cmatrix.content;
+	if (m[2][0] < 0 && m[2][1] >= 0)
+		q[0] = -1;
+	else if (m[2][0] < 0 && m[2][1] < 0)
+	{
+		q[0] = -1;
+		q[1] = -1;
+	}
+	else if (m[2][0] >= 0 && m[2][1] < 0)
+		q[1] = -1;
+	ft_navigation(v, q);
 }
 
 void	ft_clear_img(t_vars *vars)

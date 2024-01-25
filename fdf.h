@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:04:48 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 19:25:41 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/25 18:12:05 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@
 
 //16 / 9
 # ifndef WIDTH
-#  define WIDTH 1920
+#  define WIDTH 1024
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 1080
+#  define HEIGHT 600
 # endif
 
-# include <stdio.h>
 # include <math.h>
 # include "MacroLibX/includes/mlx.h"
 # include "libft/libft.h"
@@ -87,28 +86,33 @@ typedef struct s_vars {
 
 }			t_vars;
 
-int			ft_keyboard(int keycode, void *vars);
-int			ft_window(int keycode, void *vars);
-void		ft_close(t_vars *vars);
-void		ft_link_point(t_vars *vars, t_point p1, t_point p2);
-void		ft_position_links(t_vars *vars);
-void		ft_placer(t_vars *vars);
-void		ft_parse(t_vars *vars);
-void		ft_clear_img(t_vars *vars);
-void		ft_fdf(t_vars *vars);
-int			ft_mousewheel(int keycode, void *vars);
-int			ft_mousedown(int keycode, void *vars);
-int			ft_mouseup(int keycode, void *vars);
-int			ft_position(void *vars);
-t_matrix	ft_imatrix(void);
-t_matrix	ft_rx(double c);
-t_matrix	ft_rz(int c);
-t_matrix	ft_init_matrix(int row, int col);
-void		ft_matrix_mult_one(t_matrix *m, double nb);
-void		ft_matrix_div_one(t_matrix *m, double nb);
-void		ft_cmatrix_application(t_vars *vars, int i, int j);
-int			ft_printf(const char *str, ...);
-t_matrix	ft_matrix_multiplication(t_matrix m1, t_matrix m2);
-void		ft_check_cam_position(t_vars *v);
-void		ft_clear_matrix(t_matrix *m);
+int				ft_keyboard(int keycode, void *vars);
+int				ft_window(int keycode, void *vars);
+void			ft_close(t_vars *vars);
+void			ft_link_point(t_vars *vars, t_point p1, t_point p2);
+void			ft_position_links(t_vars *vars);
+void			ft_placer(t_vars *vars);
+void			ft_parse(t_vars *vars);
+void			ft_clear_img(t_vars *vars);
+void			ft_fdf(t_vars *vars);
+int				ft_mousewheel(int keycode, void *vars);
+int				ft_mousedown(int keycode, void *vars);
+int				ft_mouseup(int keycode, void *vars);
+int				ft_position(void *vars);
+t_matrix		ft_imatrix(t_vars *v);
+t_matrix		ft_rx(double c, t_vars *v);
+t_matrix		ft_rz(int c, t_vars *v);
+t_matrix		ft_init_matrix(int row, int col, t_vars *v);
+void			ft_matrix_mult_one(t_matrix *m, double nb);
+void			ft_matrix_div_one(t_matrix *m, double nb);
+void			ft_cmatrix_application(t_vars *vars, int i, int j);
+int				ft_printf(const char *str, ...);
+t_matrix		ft_matrix_multiplication(t_matrix m1, t_matrix m2, t_vars *v);
+void			ft_check_cam_position(t_vars *v);
+void			ft_clear_matrix(t_matrix *m);
+unsigned int	ft_gradient(t_point p1, t_point p2, int i, int max);
+void			ft_color(t_point *p, t_vars *v, int z);
+void			ft_check_cam_position(t_vars *v);
+void			ft_navigation(t_vars *v, int *q);
+t_matrix		ft_tmatrix(t_vars *v);
 #endif

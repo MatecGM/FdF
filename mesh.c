@@ -6,31 +6,11 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 23:19:38 by mbico             #+#    #+#             */
-/*   Updated: 2024/01/23 19:29:40 by mbico            ###   ########.fr       */
+/*   Updated: 2024/01/25 17:25:49 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-unsigned int	ft_gradient(t_point p1, t_point p2, int i, int max)
-{
-	unsigned int	color;
-
-	if (p1.r < p2.r)
-		p1.r = p1.r + (p2.r - p1.r) * (i / (double)max);
-	else if (p1.r > p2.r)
-		p1.r = p1.r - (p1.r - p2.r) * (i / (double)max);
-	if (p1.g < p2.g)
-		p1.g = p1.g + (p2.g - p1.g) * (i / (double)max);
-	else if (p1.g > p2.g)
-		p1.g = p1.g - (p1.g - p2.g) * (i / (double)max);
-	if (p1.b < p2.b)
-		p1.b = p1.b + (p2.b - p1.b) * (i / (double)max);
-	else if (p1.b > p2.b)
-		p1.b = p1.b - (p1.b - p2.b) * (i / (double)max);
-	color = (255 << 24) + (p1.r << 16) + (p1.g << 8) + p1.b;
-	return (color);
-}
 
 void	ft_link_point_y(t_vars *vars, t_point p1, t_point p2)
 {
@@ -82,28 +62,6 @@ void	ft_link_point_x(t_vars *vars, t_point p1, t_point p2)
 					p1.x + x, p1.y + y, color);
 			x += b;
 		}
-	}
-}
-
-void	ft_color(t_point *p, t_vars *v, int z)
-{
-	unsigned int	color;
-	double			midz;
-
-	midz = (v->maxz - v->minz) / (double)2 + v->minz;
-	p->r = 0;
-	p->g = 0;
-	p->b = 255;
-	if (z > v->minz && z <= midz)
-	{
-		p->g = 255 * ((z - v->minz) / (double)(midz - v->minz));
-		p->b = 255 - 255 * ((z - v->minz) / (double)(midz - v->minz));
-	}
-	else if (z > midz && z <= v->maxz)
-	{
-		p->r = 255 * ((double)(z - midz) / (v->maxz - midz));
-		p->g = 255 - 255 * ((z - midz) / (double)(v->maxz - midz));
-		p->b = 0;
 	}
 }
 
@@ -169,24 +127,4 @@ void	ft_navigation(t_vars *v, int *q)
 		coord[1] += q[1];
 	}
 	free(nav);
-}
-
-void	ft_check_cam_position(t_vars *v)
-{
-	double	**m;
-	int		q[2];
-
-	q[0] = 1;
-	q[1] = 1;
-	m = v->cmatrix.content;
-	if (m[2][0] < 0 && m[2][1] >= 0)
-		q[0] = -1;
-	else if (m[2][0] < 0 && m[2][1] < 0)
-	{
-		q[0] = -1;
-		q[1] = -1;
-	}
-	else if (m[2][0] >= 0 && m[2][1] < 0)
-		q[1] = -1;
-	ft_navigation(v, q);
 }
